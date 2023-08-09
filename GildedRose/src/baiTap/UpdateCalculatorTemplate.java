@@ -1,10 +1,10 @@
 package baiTap;
 
 public abstract class UpdateCalculatorTemplate implements UpdateCalculator {
+    private static final int MAXIMUM_ALLOWED_QUALITY = 50;
+    private static final int MINIMUM_ALLOWED_QUALITY = 0;
     protected final int currentSellIn;
     protected final int currentQuality;
-    private static final int MaximumAllowedQuality = 50;
-    private static final int MinimumAllowedQuality = 0;
 
     protected UpdateCalculatorTemplate(int currentSellIn, int currentQuality) {
         this.currentSellIn = currentSellIn;
@@ -22,8 +22,8 @@ public abstract class UpdateCalculatorTemplate implements UpdateCalculator {
     }
 
     private int GetCorrectUpdatedQuality(int updatedQuality) {
-        return updatedQuality >= MaximumAllowedQuality ? MaximumAllowedQuality :
-                Math.max(updatedQuality, MinimumAllowedQuality);
+        return updatedQuality >= MAXIMUM_ALLOWED_QUALITY ? MAXIMUM_ALLOWED_QUALITY :
+                Math.max(updatedQuality, MINIMUM_ALLOWED_QUALITY);
     }
 
     protected abstract int GetQualityIncrementalUnit();
